@@ -34,9 +34,9 @@ class SpendingBreakdown {
         accountId: json["account_id"],
         category: TransactionCategory.fromJson(json["category"]),
         totalStartingBalance:
-            (json["total_starting_balance"] as num).toDouble(),
+            double.tryParse(json["total_starting_balance"]) ?? 0,
         totalTransactionAmount:
-            (json["total_transaction_amount"] as num).toDouble().abs(),
+            (double.tryParse(json["total_transaction_amount"]) ?? 0).abs(),
         latestTransactionDate: DateTime.parse(json["latest_transaction_date"]),
         diffForHumans: json["diff_for_humans"],
       );

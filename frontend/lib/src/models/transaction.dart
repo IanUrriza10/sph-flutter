@@ -36,7 +36,7 @@ class Transaction {
             DateFormat('yyyy-MM-ddTHH:mm:ssZ').parseUTC(json["created_at"]),
         transactionType: TransactionType.fromJson(json['transaction_type']),
         category: TransactionCategory.fromJson(json['category']),
-        amount: (json["transaction_amount"] as num).toDouble(),
+        amount: double.tryParse(json['transaction_amount']) ?? 0,
         description: json["description"],
         accountName: json["account_name"],
         receiverName: json['receiver_name'],
